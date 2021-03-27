@@ -56,3 +56,48 @@ export const QUERY_USER = gql`
     }
   }
   `;
+
+// different syntax for this query - we're not passing any variables to it, so we can simply name the query
+// this query will receive all data related to logged in user
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      friendCount
+      thoughts {
+        _id
+        thoughtText
+        createdAt
+        reactionCount
+        reactions {
+          _id
+          createdAt
+          reactionBody
+          username
+        }
+      }
+      friends {
+        _id
+        username
+      }
+    }
+  }
+  `;
+
+  // less data for homepage
+  export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+  `;
